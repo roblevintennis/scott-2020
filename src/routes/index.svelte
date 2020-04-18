@@ -9,7 +9,7 @@
 </style>
 
 <svelte:head>
-  <title>Sapper project template</title>
+  <title>Scott Tolinski - Level Up Tutorials & Syntax - Web Developer</title>
 </svelte:head>
 
 <div in:fadeIn out:fadeOut>
