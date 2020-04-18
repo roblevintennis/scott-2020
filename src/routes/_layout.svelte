@@ -18,6 +18,14 @@
     line-height: 1.5;
   }
 
+  @font-face {
+    font-family: "MonoLisa";
+    src: url("/MonoLisa-Regular.otf");
+    src: url("/MonoLisa-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+
   main {
     padding: 4rem 2rem;
   }
