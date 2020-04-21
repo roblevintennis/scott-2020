@@ -11,6 +11,7 @@
   }
 
   li {
+    font-size: 0.7rem;
     margin: 0;
   }
 
