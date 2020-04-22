@@ -66,5 +66,10 @@
         posts
       </a>
     </li>
+    <li>
+      <a aria-current={segment === 'uses' ? 'page' : undefined} href="uses">
+        uses
+      </a>
+    </li>
   </ul>
 </nav>

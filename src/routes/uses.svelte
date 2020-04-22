@@ -1,5 +1,17 @@
 <script context="module">
-  export async function preload() {
-    return this.redirect(302, "https://kit.co/leveluptutorials");
+  export function preload({ params, query }) {
+    return this.fetch(`uses.json`)
+      .then(r => r.json())
+      .then(uses => {
+        return { uses };
+      });
   }
 </script>
+
+<script>
+  export let uses;
+</script>
+
+<div class="content">
+  {@html uses}
+</div>
