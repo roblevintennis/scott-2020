@@ -1,6 +1,6 @@
 {
-  "name": "TODO",
-  "description": "TODO",
+  "name": "Scott Tolinski",
+  "description": "Web Developer | Creator of Level Up Tutorials | Co-host of Syntax.fm | Father of 2 | Bboy | Robotops Crew | Youtuber | Tea Drinker | Tutorial Maker | Fan of physical activity | Former Music Major | Denverite | Michigander | Shaw Brothers Kung Fu Film Watcher | Handstander | Stretching enthusiast",
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev",

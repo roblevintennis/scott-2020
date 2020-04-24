@@ -9,9 +9,10 @@
 </script>
 
 <script>
+  import { fadeIn, fadeOut } from "../components/Fade";
   export let uses;
 </script>
 
-<div class="content">
+<div class="content" in:fadeIn out:fadeOut>
   {@html uses}
 </div>
