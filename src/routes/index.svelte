@@ -1,5 +1,18 @@
 <script>
+  import { onMount } from "svelte";
   import { fadeIn, fadeOut } from "../components/Fade";
+
+  onMount(() => {
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  });
 </script>
 
 <style>
