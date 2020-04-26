@@ -1,10 +1,9 @@
 <script context="module">
-  export function preload({ params, query }) {
-    return this.fetch(`uses.json`)
-      .then(r => r.json())
-      .then(uses => {
-        return { uses };
-      });
+  import { useData } from "../clientUtilities";
+
+  export async function preload() {
+    const uses = await useData(this, "uses");
+    return { uses };
   }
 </script>
 

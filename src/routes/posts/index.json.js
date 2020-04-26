@@ -1,20 +1,5 @@
-import fs from "fs";
-import path from "path";
-import grayMatter from "gray-matter";
+import { getAllMDIn } from "../../utilities";
 
-const getAllPosts = () =>
-  fs.readdirSync("src/content").map((fileName) => {
-    const post = fs.readFileSync(
-      path.resolve("src/content", fileName),
-      "utf-8"
-    );
-    return grayMatter(post).data;
-  });
-
-export function get(req, res) {
-  res.writeHead(200, {
-    "Content-Type": "application/json",
-  });
-  const uses = getAllPosts();
-  res.end(JSON.stringify(uses));
+export function get(_, res) {
+  getAllMDIn(res, "src/content");
 }

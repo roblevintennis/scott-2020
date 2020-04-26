@@ -2,15 +2,7 @@
   import { fadeIn, fadeOut } from "../../components/Fade";
 </script>
 
-<style>
-  .wrapper {
-    max-width: 900px;
-  }
-</style>
-
-<div class="wrapper" in:fadeIn out:fadeOut>
-  <h1>Speaking & Appearances</h1>
-
+<div>
   <iframe
     title="2fast"
     width="560"
