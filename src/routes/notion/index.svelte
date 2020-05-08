@@ -1,6 +1,5 @@
 <script context="module">
-  import Notion from "../../components/Notion.svelte";
-  import { fetchNotion } from "../../components/fetchNotion";
+  import { Notion, fetchNotion } from "@leveluptuts/svelte-notion";
 
   export async function preload() {
     const pageId = `3e03212e646e41caaa560408162dee99`;
@@ -42,6 +41,9 @@
 
   a {
     font-size: 2rem;
+  }
+  :global(hr) {
+    background: white;
   }
 </style>
 
