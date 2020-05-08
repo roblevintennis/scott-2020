@@ -1,14 +1,10 @@
 <script context="module">
-  import Code from "../../components/Code.svelte";
+  import Notion from "../../components/Notion.svelte";
+  import { fetchNotion } from "../../components/fetchNotion";
+
   export async function preload() {
-    const res = await this.fetch(
-      `https://notion-api.splitbee.io/v1/page/3e03212e646e41caaa560408162dee99`
-    );
-    const post = await res.json();
-    const objectArray = Object.entries(post);
-    const blocks = objectArray.map(([key, value]) => {
-      return value.value;
-    });
+    const pageId = `3e03212e646e41caaa560408162dee99`;
+    const blocks = await fetchNotion({ id: pageId, context: this });
     return { blocks };
   }
 </script>
@@ -53,22 +49,4 @@
   <title>Blog</title>
 </svelte:head>
 
-{#each blocks as block}
-  {#if block.properties}
-    {#if block.type === 'header'}
-      <h1>{block.properties.title[0][0]}</h1>
-    {:else if block.type === 'page'}
-      <h2>{block.properties.title[0][0]}</h2>
-    {:else if block.type === 'sub_header'}
-      <h2>{block.properties.title[0][0]}</h2>
-    {:else if block.type === 'sub_sub_header'}
-      <h3>{block.properties.title[0][0]}</h3>
-    {:else if block.type === 'text'}
-      <p>{block.properties.title[0][0]}</p>
-    {:else if block.type === 'code'}
-      <Code
-        code={block.properties.title[0][0]}
-        lang={block.properties.language[0][0]} />
-    {/if}
-  {/if}
-{/each}
+<Notion {blocks} />

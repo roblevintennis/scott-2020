@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "sapper dev",
     "start": "npx serve __sapper__/export",
+    "prod": "sapper export; npx serve __sapper__/export",
     "build": "sapper export",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
