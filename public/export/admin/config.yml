@@ -1,0 +1,28 @@
+backend:
+  name: github
+  repo: stolinski/scott-2020
+publish_mode: editorial_workflow # Allows you to save drafts before publishing them
+media_folder: static/uploads # Media files will be stored in the repo under static/images/uploads
+public_folder: /uploads # The src attribute for uploaded media will begin with /images/uploads
+
+collections:
+  - name: "posts" # Used in routes, e.g., /admin/collections/blog
+    label: "Posts" # Used in the UI
+    folder: "src/content" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., title.md
+    fields: # The fields for each document, usually in front matter
+      - { label: "Layout", name: "layout", widget: "hidden", default: "blog" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - name: "talks" # Used in routes, e.g., /admin/collections/blog
+    label: "Talks" # Used in the UI
+    folder: "src/talks" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., title.md
+    fields: # The fields for each document, usually in front matter
+      - { label: "Layout", name: "layout", widget: "hidden", default: "blog" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }

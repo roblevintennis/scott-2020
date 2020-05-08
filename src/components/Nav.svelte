@@ -71,5 +71,10 @@
         uses
       </a>
     </li>
+    <li>
+      <a aria-current={segment === 'uses' ? 'page' : undefined} href="notion">
+        notion
+      </a>
+    </li>
   </ul>
 </nav>
