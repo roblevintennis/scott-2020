@@ -1,5 +1,5 @@
 <script context="module">
-  import { Notion, fetchNotion } from "@leveluptuts/svelte-notion";
+  import { Notion, fetchNotion } from "@leveluptuts/svelte-notion/src";
 
   export async function preload() {
     const pageId = `3e03212e646e41caaa560408162dee99`;
