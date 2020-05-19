@@ -17,6 +17,8 @@ To encrypt your files run `gpg --symmetric --cipher-algo AES256 settings.json` a
 
 Write your decrypt script and put it in the folder `./.github/scripts/`
 
+Mine is named `decrypt.sh`
+
 ```
 #!/bin/sh
 
@@ -33,3 +35,49 @@ gpg --quiet --batch --yes --decrypt --passphrase="$PASS" \
 ### Step 3 - Make sure script is executable
 
 
+`chmod +x decrypt.sh`
+
+After this is done, commit all your filed to git
+
+### Step 4 - Complete your github action
+
+Here is mine. I won't go through the basics of setting up a gh action, but here it is.
+
+```
+name: Deploy
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+jobs:
+  setup_meteor:
+    runs-on: ubuntu-16.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Decrypt large secret
+        run: ./.github/scripts/decrypt.sh
+        env:
+          PASS: ${{ secrets.PASS }}
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Setup Meteor
+        uses: meteorengineer/setup-meteor@v1
+        with:
+          meteor-release: "1.10.1"
+      - run: yarn install
+      - name: Meteor Deploy
+        run: METEOR_SESSION_FILE=$HOME/secrets/token.json meteor deploy www.yourwebsite.com --settings $HOME/secrets/settings.json
+
+
+``` 
+
+### Step 5 - Add your secret to Github
+
+https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets
+
+Ours in this example is named `PASS` so please make sure your code reflects the name of your secret. ie if you named yours something different, swap the word PASS everywhere you see it here.
+
+### Step 6 - PUSH
+
+Push that repo up and watch as it deploys. If you hit any issues check the error logs in Github actions. I found them to be totally helpful in troubleshooting when something went wrong.
