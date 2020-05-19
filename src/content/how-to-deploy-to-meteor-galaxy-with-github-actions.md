@@ -7,14 +7,13 @@ date: 2020-05-18T23:38:32.793Z
 
 Ok, let's get into it.
 
-### Step 1
-
+### Step 1 - Encrypt files
 Encrypt your settings.json and your token file. If you don't have a deploy token, please consult the galaxy docs. https://galaxy-guide.meteor.com/deploy-guide.html#deployment-token
 
 To encrypt your files run `gpg --symmetric --cipher-algo AES256 settings.json` as well as the same command on your token file. My token was token.json, so I ran.
 `gpg --symmetric --cipher-algo AES256 token.json`
 
-### Step 2
+### Step 2 - Create decrypt script
 
 Write your decrypt script and put it in the folder `./.github/scripts/`
 
@@ -25,9 +24,12 @@ Write your decrypt script and put it in the folder `./.github/scripts/`
 mkdir $HOME/secrets
 # --batch to prevent interactive command --yes to assume "yes" for questions
 gpg --quiet --batch --yes --decrypt --passphrase="$PASS" \
---output $HOME/secrets/settings.json settings.json.gpg
+--output $HOME/secrets/settings.json settings.json.g#pg
 
 gpg --quiet --batch --yes --decrypt --passphrase="$PASS" \
 --output $HOME/secrets/token.json token.json.gpg
 ```
+
+### Step 3 - Make sure script is executable
+
 
