@@ -13,7 +13,7 @@
 </script>
 
 <style>
-  h1:after {
+   h1:after {
     content: "";
     position: absolute;
     height: 120%;

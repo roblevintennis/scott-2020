@@ -3,11 +3,13 @@ layout: blog
 title: How To Deploy To Meteor Galaxy With Github Actions
 date: 2020-05-18T23:38:32.793Z
 ---
- TLDR; you need to encrypt your settings.json file as well as your deployToken.json before pushing. Write a script to decrypt them and then use them in your `meteor deploy` command.
+
+TLDR; you need to encrypt your settings.json file as well as your deployToken.json before pushing. Write a script to decrypt them and then use them in your `meteor deploy` command.
 
 Ok, let's get into it.
 
 ### Step 1 - Encrypt files
+
 Encrypt your settings.json and your token file. If you don't have a deploy token, please consult the galaxy docs. https://galaxy-guide.meteor.com/deploy-guide.html#deployment-token
 
 To encrypt your files run `gpg --symmetric --cipher-algo AES256 settings.json` as well as the same command on your token file. My token was token.json, so I ran.
@@ -19,7 +21,7 @@ Write your decrypt script and put it in the folder `./.github/scripts/`
 
 Mine is named `decrypt.sh`
 
-```
+```bash
 #!/bin/sh
 
 # Decrypt the file
@@ -34,7 +36,6 @@ gpg --quiet --batch --yes --decrypt --passphrase="$PASS" \
 
 ### Step 3 - Make sure script is executable
 
-
 `chmod +x decrypt.sh`
 
 After this is done, commit all your filed to git
@@ -43,7 +44,7 @@ After this is done, commit all your filed to git
 
 Here is mine. I won't go through the basics of setting up a gh action, but here it is.
 
-```
+```yml
 name: Deploy
 on:
   push:
@@ -68,9 +69,7 @@ jobs:
       - run: yarn install
       - name: Meteor Deploy
         run: METEOR_SESSION_FILE=$HOME/secrets/token.json meteor deploy www.yourwebsite.com --settings $HOME/secrets/settings.json
-
-
-``` 
+```
 
 ### Step 5 - Add your secret to Github
 
