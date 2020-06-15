@@ -4,7 +4,7 @@ title: "Scott's Favorite Kung Fu Films"
 tags: ["random"]
 ---
 
-I get asked all the time about my favorite kung fu films. As an enthusiest, I tend to stay more in the Shaw Brothers studio side of things rather than Golden Harvest and modern production companies, so this list will be split into my favorites in Shaw and outside of Shaw studios.
+I get asked all the time about my favorite kung fu films. As an enthusiast, I tend to stay more in the Shaw Brothers studio side of things rather than Golden Harvest and modern production companies, so this list will be split into my favorites in Shaw and outside of Shaw studios.
 
 ## Favorite Shaw Brothers Films
 
